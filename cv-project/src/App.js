@@ -15,20 +15,40 @@ class App extends Component {
         address: "",
         city: "",
         province: "",
+        workExperience: [],
+
       }
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange(e){
+  handleChange(e,obj){
+    if(this.state.step === 1){
     this.setState(prevState => {
-      console.log(e.target)
       return {
         ...prevState,
         [e.target.name] : e.target.value
       }
     })
   }
+}
 
+  //   this.setState(prevState => {
+  //     return {
+  //       ...prevState,
+  //       workExperience: [...prevState.workExperience, obj]
+  //     }
+  //   })
+  // }
+
+ handleSubmit(e){
+   e.preventDefault()
+   this.setState(prevState => {
+     return {
+       ...prevState,
+       step: prevState.step + 1
+     }
+   })
+ }
   render(){
     return (
       <div className="App">

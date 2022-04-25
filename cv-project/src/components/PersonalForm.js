@@ -62,8 +62,14 @@ class PersonalForm extends Component {
                 onChange={handleChange}
                 name="province"
                 value={province}
-            />     
+            /> 
+            <div>
+            <button type="Submit">Submit</button> 
+            <button>Edit</button>
+            </div>   
+            
      </form>
+     
      </>
        )
     }
