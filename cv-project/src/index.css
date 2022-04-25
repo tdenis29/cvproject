@@ -1,0 +1,59 @@
+*{
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  box-sizing: border-box;
+}
+.App{
+  display: flex;
+  justify-content: center;
+}
+.form_container{
+  width: 45%;
+  background-color: aqua;
+}
+.cv_container{
+  width: 45%;
+  background-color: red;
+  padding: 0 1rem;
+}
+
+
+
+/* CV Header Layout */
+header{
+  display: flex;
+  padding: 1rem 2rem 1rem 2rem;
+  align-items: flex-end;
+}
+.cv_header--left{
+  width: 50%;
+}
+.cv_header--right{
+  width: 50%;
+  text-align: right;
+}
+/* CV Styles */
+.asH1{
+  font-size: 1.7rem;
+}
+.asH1-bold{
+  font-size: 2rem;
+  font-weight: 700;
+}
+.cv_contact--small-heading{
+  font-size: 1.25rem;
+}
+
+/* form Styles */
+
+.personalForm{
+  display: flex;
+  flex-direction: column;
+  
+}
+.personalForm > input {
+  width: 50%;
+  margin: .5rem 0 .5rem 0;
+  height: 1.7rem;
+}
