@@ -6,8 +6,25 @@ class Cv extends Component{
     constructor(props){
         super(props)
     }
-    render(props){
-    const { firstName, lastName, phoneNumber, email, address, city, province } = this.props.state
+    
+    render(){
+    const { firstName, lastName, phoneNumber, email, address, city, province, objective } = this.props.state
+    
+    const workExperienceElements = this.props.state.workExperience.map(item => {
+            return (
+                <li className="educationblock" key={item.id}>
+                    <div className="educationblock-head">
+                        <p className="degree">{item.degreeTitle}</p>
+                        <p className="school">{item.school}</p>
+                    </div>
+                    <div className="educationblock-body">
+                        <p className="from">{item.from}</p>
+                        <p className="to">{item.to}</p>
+                    </div>
+                </li>
+            )
+        })
+   
          return (
             <div className="cv_container">
                 <header>
@@ -21,13 +38,24 @@ class Cv extends Component{
                             <p>{phoneNumber === "" || undefined ? "1-555-555-5555" : phoneNumber}</p>
                             <p>{email === "" || undefined ? "email@email.com" : email}</p>
                             <p>
-                               {address === "" || undefined ? "1234 5th Ave" : address},  { city=== "" || undefined ? "Calgary" : city} , 
-                               {province === "" || undefined ? "AB" : province} 
+                               {address === "" || undefined ? "1234 5th Ave" : address},  { city=== "" || undefined ? "Calgary" : city}, 
+                               {province === "" || undefined ? " AB" : province} 
                             </p>
-                            <span></span>
                         </div>
                     </div>
                 </header>
+                <div className="cv_objective-container">
+                    <p className="asH3">Objective</p>
+                    <p className="objective">{objective}</p>
+                </div>
+
+                <div className="cv_education-container">
+                    <p className="asH3">Education</p>
+                    <ul className="cv_education-blockContainer">
+                        {workExperienceElements}
+                
+                    </ul>
+                </div>
             </div>
         )
     }

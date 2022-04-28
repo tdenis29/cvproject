@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 
 class PersonalForm extends Component {
-    // eslint-disable-next-line no-useless-constructor
-    constructor(props){
-        super(props)
-    }
+
     render () {
-    console.log(this.props)
-    const { handleChange, state: {firstName, lastName, phoneNumber, email, address, city, province}} = this.props.props
+    const { handleChange,handleSubmit, state: {firstName, lastName, phoneNumber, email, address, city, province, objective}} = this.props.props
+
        return (
-           <>
+        <>
         <p className='asH1'>Personal Details</p>
-        <form className='personalForm'>
+        <form nosubmit="true" className='personalForm'>
             <input
                 type="text"
                 placeholder="First Name"
@@ -63,8 +60,13 @@ class PersonalForm extends Component {
                 name="province"
                 value={province}
             /> 
+            <textarea
+            name="objective"
+            value={objective}
+            onChange={handleChange}>
+            </textarea>
             <div>
-            <button type="Submit">Submit</button> 
+            <button onClick={handleSubmit}>Submit</button> 
             <button>Edit</button>
             </div>   
             

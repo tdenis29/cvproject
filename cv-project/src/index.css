@@ -4,7 +4,7 @@
   list-style-type: none;
   box-sizing: border-box;
 }
-.App{
+#root{
   display: flex;
   justify-content: center;
 }
@@ -25,6 +25,7 @@ header{
   display: flex;
   padding: 1rem 2rem 1rem 2rem;
   align-items: flex-end;
+  border-bottom: solid 2px black;
 }
 .cv_header--left{
   width: 50%;
@@ -33,18 +34,40 @@ header{
   width: 50%;
   text-align: right;
 }
-/* CV Styles */
+.cv_objective-container{
+  padding: 0rem 2rem 0rem 2rem;
+}
+.cv_education-container{
+  padding: 0rem 2rem 0rem 2rem;
+}
+/* CV Styles word template 953.33px */
 .asH1{
-  font-size: 1.7rem;
+  font-size: 2rem;
 }
 .asH1-bold{
   font-size: 2rem;
   font-weight: 700;
 }
+.asH2{
+  font-size: 1.7rem;
+}
+.asH3{
+ font-size: 1.4rem;
+}
 .cv_contact--small-heading{
   font-size: 1.25rem;
 }
-
+.educationblock-head{
+  display: flex;
+  justify-content: left;
+  align-items: flex-end;
+  gap: 18px;
+}
+.educationblock-body{
+  display: flex;
+  justify-content: left;
+  gap: 18px;
+}
 /* form Styles */
 
 .personalForm{

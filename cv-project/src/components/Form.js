@@ -1,19 +1,38 @@
 import React, { Component } from 'react';
+import EducationForm from './EducationForm';
 import PersonalForm from './PersonalForm';
 class Form extends Component {
-    // eslint-disable-next-line no-useless-constructor
-    constructor(props){
-        super(props)
-    }
+
    
     render(){
-        return (
-            <div className='form_container'>
-                <PersonalForm
-                    props={this.props}
-                />
-            </div>
-        )
+        const { step } = this.props.state
+     
+        // eslint-disable-next-line default-case
+        switch(step){
+            case 1: 
+                return(
+                    <div className='form_container'>
+                        <PersonalForm
+                            props={this.props}
+                        />
+                    </div>
+            )
+            case 2: 
+                return(
+                    <div className='form_container'>
+                        <EducationForm
+                            props={this.props}
+                        />
+                    </div>
+            )
+        } 
+        // return (
+            // <div className='form_container'>
+            //     <PersonalForm
+            //         props={this.props}
+            //     />
+            // </div>
+        // )
     }
 }
 
