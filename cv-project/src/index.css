@@ -34,15 +34,17 @@ header{
   width: 50%;
   text-align: right;
 }
-.cv_objective-container{
+.cv_objective-container, .cv_education-container, .cv_work-container{
   padding: 0rem 2rem 0rem 2rem;
+  margin: 2rem 0;
 }
-.cv_education-container{
-  padding: 0rem 2rem 0rem 2rem;
-}
+
 /* CV Styles word template 953.33px */
 .asH1{
   font-size: 2rem;
+}
+.asH1.form{
+  text-align: center;
 }
 .asH1-bold{
   font-size: 2rem;
@@ -53,20 +55,25 @@ header{
 }
 .asH3{
  font-size: 1.4rem;
+ margin-bottom: 1rem;
 }
 .cv_contact--small-heading{
   font-size: 1.25rem;
 }
-.educationblock-head{
+.educationblock-head, .workblock-head{
   display: flex;
   justify-content: left;
   align-items: flex-end;
-  gap: 18px;
+  width: 75%;
+  
 }
-.educationblock-body{
+.educationblock-body, .workblock-body{
   display: flex;
   justify-content: left;
-  gap: 18px;
+  
+}
+.degree,.school, .jobTitle, .companyName{
+  width: 50%;
 }
 /* form Styles */
 
@@ -75,6 +82,7 @@ header{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   
 }
 .personalForm > input {
@@ -88,8 +96,12 @@ header{
   width: 50%;
   margin: .5rem 0 .5rem 0;
 }
+#workForm > textarea{
+  width: 50%;
+  margin: .5rem 0 .5rem 0;
+}
 
-#educationForm{
+#educationForm, #workForm{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,7 +115,13 @@ header{
   border-radius: 5px;
   border: none;
 }
-
+#workForm > input {
+  width: 50%;
+  margin: 1rem 0 1rem 0;
+  height: 2rem;
+  border-radius: 5px;
+  border: none;
+}
 .button-container{
   width: 100%;
   display: flex;
@@ -113,6 +131,12 @@ header{
 }
 .li-button-container.show{
   display: block;
+}
+
+/* Button styles */
+.button-container{
+  width: 100%;
+  display: flex;
 }
 button{
   appearance: button;

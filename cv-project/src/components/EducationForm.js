@@ -9,7 +9,7 @@ class EducationForm extends Component {
         const {edit} = this.props.props.state
         return (
         <>
-           <p className='asH1'>Education</p> 
+           <p className='asH1 form'>Education</p> 
             <form onSubmit={handleAdd} id="educationForm">
 
                 <input

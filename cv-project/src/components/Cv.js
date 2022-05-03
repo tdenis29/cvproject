@@ -29,6 +29,24 @@ class Cv extends Component{
                 </li>
             )
         })
+        const workExperienceElements = this.props.state.workExperience.map(item => {
+            return (
+                <li className="workblock" onMouseEnter={handleMouseOver} onMouseLeave={handleMouseLeave} id={item.id} key={item.id}>
+                <div className="workblock-head">
+                    <p className="jobTitle">{item.jobTitle}</p>
+                    <p className="companyName">{item.companyName}</p>
+                </div>
+                <div className="workblock-body">
+                    <p className="from">{item.from}</p>
+                    <p className="to">{item.to}</p>
+                </div>
+                <div className="li-button-container">
+                    <button onClick={handleInitEdit} className="editButton">Edit</button>
+                    <button className="removeButton">Remove</button>
+                </div>
+            </li>
+            )
+        })
    
          return (
             <div className="cv_container">
@@ -58,6 +76,13 @@ class Cv extends Component{
                     <p className="asH3">Education</p>
                     <ul className="cv_education-blockContainer">
                         {eduExperienceElements}
+                    </ul>
+                </div>
+
+                <div className="cv_work-container">
+                    <p className="asH3">Work Experience</p>
+                    <ul className="cv_workexperience-blockContainer">
+                        {workExperienceElements}
                     </ul>
                 </div>
             </div>

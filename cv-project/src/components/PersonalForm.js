@@ -7,7 +7,7 @@ class PersonalForm extends Component {
 
        return (
         <>
-        <p className='asH1'>Personal Details</p>
+        <p className='asH1 form'>Personal Details</p>
         <form id="personalForm" className='personalForm'>
             <input
                 type="text"

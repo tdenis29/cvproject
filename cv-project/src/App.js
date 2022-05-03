@@ -215,13 +215,13 @@ addToArray(){
       }
     })
   }
-  setTimeout(console.log(this.state.eduExperience),10000)
+
  }
 
   render(){
     return (
       <>     
-       <Form
+      <Form
         handleChange={this.handleChange}
         handleAdd={this.handleAdd}
         handleSubmit={this.handleSubmit}

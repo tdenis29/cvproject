@@ -6,7 +6,7 @@ class WorkForm extends Component{
         const { handleChange,handleAdd,handleBack, handleSubmit, state: {newWorkExperience : {companyName, jobTitle, from, to, summary}}} = this.props.props
         return (
             <>
-            <p className='asH1'>Work Experience</p> 
+            <p className='asH1 form'>Work Experience</p> 
              <form id="workForm" onSubmit={handleAdd}>
                  <input
                      type="text"
@@ -18,7 +18,7 @@ class WorkForm extends Component{
  
                  <input
                      type="text"
-                     placeholder="school"
+                     placeholder="Job Title"
                      onChange={handleChange}
                      value={jobTitle || ""}
                      name="jobTitle"
@@ -44,15 +44,17 @@ class WorkForm extends Component{
                     name="summary"
                     value={summary || ""}
                     onChange={handleChange}
+                    rows="6"
                 >
 
                 </textarea>
-             <button type="button">Add</button>
-             </form>
+             <button>Add</button>
              <div className="button-container">
-                <button onClick={handleBack}>Back</button>
-                <button onClick={handleSubmit}>Next</button>
+                <button type="button" onClick={handleBack}>Back</button>
+                <button type="button" onClick={handleSubmit}>Next</button>
             </div>
+             </form>
+           
          
          </>
         )
