@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EducationForm from './EducationForm';
 import PersonalForm from './PersonalForm';
+import WorkForm from './WorkForm';
 class Form extends Component {
 
    
@@ -24,6 +25,14 @@ class Form extends Component {
                             props={this.props}
                         />
                     </div>
+            )
+            case 3: 
+            return (
+                <div className='form_container'>
+                    <WorkForm
+                        props={this.props}
+                    />
+                </div>
             )
         } 
         // return (

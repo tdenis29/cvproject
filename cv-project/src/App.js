@@ -5,7 +5,6 @@ import {nanoid} from "./utils/nanoid"
 
 
 class App extends Component {
-  // eslint-disable-next-line no-useless-constructor
   constructor(){
     super()
     this.state = {
@@ -18,20 +17,34 @@ class App extends Component {
         city: "",
         province: "",
         objective: "",
-        workExperience: [
+        eduExperience: [
   
         ],
-        newWorkExperience: {
+        newEduExperience: {
           degreeTitle: "",
           school: "",
           from: "",
           to: "",
         },
+        workExperience: [
+
+        ],
+        newWorkExperience: {
+          companyName: "",
+          jobTitle: "",
+          from: "",
+          to: "",
+          summary: "",
+        }
+
 
       }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
+    this.handleBack = this.handleBack.bind(this)
+    this.addToArray = this.addToArray.bind(this)
+    this.clearNewObject = this.clearNewObject.bind(this)
   }
 
   handleChange(e){
@@ -47,24 +60,24 @@ class App extends Component {
     this.setState(prevState => {
       return {
         ...prevState,
-       newWorkExperience: {
-         ...prevState.newWorkExperience,
+       newEduExperience: {
+         ...prevState.newEduExperience,
          [e.target.name]: e.target.value,
-         
        }
+      }
+    })
+  } else if (this.state.step === 3){
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        newWorkExperience: {
+          ...prevState.newWorkExperience,
+          [e.target.name]: e.target.value
+        }
       }
     })
   }
 }
-
-
-  //   this.setState(prevState => {
-  //     return {
-  //       ...prevState,
-  //       workExperience: [...prevState.workExperience, obj]
-  //     }
-  //   })
-  // }
 
  handleSubmit(e){
    console.log(e)   
@@ -72,42 +85,90 @@ class App extends Component {
    this.setState(prevState => {
      return {
        ...prevState,
-       step: prevState.step + 1
+       step: prevState.step === 3 ? prevState.step = 1 : prevState.step+1
      }
    })
  }
+
  handleBack(e){
    this.setState(prevState => {
      return {
        ...prevState,
-       step: prevState.step-1
+       step: prevState.step === 1 ? prevState.step = 3 : prevState.step-1
      }
    })
  }
-// addId(){
-//  const workExperienceUpdate = this.state.workExperience.forEach(item => {
-//       item.id = nanoid()
-//  })
-//  this.setState(prevState => {
-//    return {
-//      ...prevState,
-//      workExperience: workExperienceUpdate
-//    }
-//  })
-// }
 
- handleAdd(e){
-  e.preventDefault()
+handleAdd(e) {
+  if(this.state.step === 2){
+    e.preventDefault()
+    const { newEduExperience } = this.state;
+    newEduExperience.id = nanoid()
+    this.setState({ newEduExperience: newEduExperience }, () => {
+      this.addToArray()
+      this.clearNewObject()
+    });
+  } else if (this.state.step ===3){
+    e.preventDefault()
+    const { newWorkExperience } = this.state;
+    newWorkExperience.id = nanoid()
+    this.setState({ newWorkExperience: newWorkExperience }, () => {
+      this.addToArray()
+      this.clearNewObject()
+    });
+  }
+  };
+
+clearNewObject(){
+  if(this.state.step === 2){
   this.setState(prevState => {
     return {
       ...prevState,
-      workExperience: 
-      [...prevState.workExperience, this.state.newWorkExperience]
+      newEduExperience: {
+        degreeTitle: "",
+        school: "",
+        to: "",
+        from: "",
+      }
     }
   })
-  this.addId()
-  console.log(this.state)
+} else if (this.state.step === 3){
+  this.setState(prevState => {
+    return {
+      ...prevState,
+      newWorkExperience: {
+        companyName: "",
+        jobTitle: "",
+        to: "",
+        from: "",
+      }
+    }
+  })
+}
+}
+
+
+addToArray(){
+  if(this.state.step === 2){
+   console.log(this.state.newEduExperience)
+   this.setState(prevState => {
+     return {
+       ...prevState,
+       eduExperience: 
+       [...prevState.eduExperience, this.state.newEduExperience]
+     }
+   })
+  } else if (this.state.step === 3){
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        workExperience: 
+        [...prevState.workExperience, this.state.newWorkExperience]
+      }
+    })
+  }
  }
+
   render(){
     return (
       <>     
@@ -115,6 +176,7 @@ class App extends Component {
         handleChange={this.handleChange}
         handleAdd={this.handleAdd}
         handleSubmit={this.handleSubmit}
+        handleBack={this.handleBack}
         state={this.state} 
       />
       <Cv 

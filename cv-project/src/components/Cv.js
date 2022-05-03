@@ -10,9 +10,9 @@ class Cv extends Component{
     render(){
     const { firstName, lastName, phoneNumber, email, address, city, province, objective } = this.props.state
     
-    const workExperienceElements = this.props.state.workExperience.map(item => {
+    const eduExperienceElements = this.props.state.eduExperience.map(item => {
             return (
-                <li className="educationblock" key={item.id}>
+                <li className="educationblock" id={item.id} key={item.id}>
                     <div className="educationblock-head">
                         <p className="degree">{item.degreeTitle}</p>
                         <p className="school">{item.school}</p>
@@ -52,8 +52,7 @@ class Cv extends Component{
                 <div className="cv_education-container">
                     <p className="asH3">Education</p>
                     <ul className="cv_education-blockContainer">
-                        {workExperienceElements}
-                
+                        {eduExperienceElements}
                     </ul>
                 </div>
             </div>

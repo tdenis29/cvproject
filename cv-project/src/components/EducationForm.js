@@ -5,12 +5,12 @@ class EducationForm extends Component {
 
     render(){
         
-        const { handleChange,handleAdd, state: {newWorkExperience : {degreeTitle, school, from, to}}} = this.props.props
+        const { handleChange,handleAdd,handleSubmit,handleBack,  state: {newEduExperience : {degreeTitle, school, from, to}}} = this.props.props
         console.log(this.props.props.state)
         return (
         <>
            <p className='asH1'>Education</p> 
-            <form onSubmit={handleAdd}>
+            <form onSubmit={handleAdd} id="educationForm">
 
                 <input
                     type="text"
@@ -46,6 +46,10 @@ class EducationForm extends Component {
              
             <button>Add</button>
             </form>
+            <div className="button-container">
+                <button onClick={handleBack}>Back</button>
+                <button onClick={handleSubmit}>Next</button>
+            </div>
         </>
         )
     }

@@ -8,7 +8,7 @@ class PersonalForm extends Component {
        return (
         <>
         <p className='asH1'>Personal Details</p>
-        <form nosubmit="true" className='personalForm'>
+        <form id="personalForm" className='personalForm'>
             <input
                 type="text"
                 placeholder="First Name"
@@ -63,15 +63,14 @@ class PersonalForm extends Component {
             <textarea
             name="objective"
             value={objective}
-            onChange={handleChange}>
-            </textarea>
-            <div>
-            <button onClick={handleSubmit}>Submit</button> 
-            <button>Edit</button>
-            </div>   
-            
+            onChange={handleChange}
+            rows="6"
+            placeholder="Objective"
+            >
+            </textarea>  
+            <button type="button" onClick={handleSubmit}>Next</button>
      </form>
-     
+  
      </>
        )
     }
