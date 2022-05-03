@@ -103,6 +103,17 @@ header{
   border-radius: 5px;
   border: none;
 }
+
+.button-container{
+  width: 100%;
+  display: flex;
+}
+.li-button-container{
+  display: none;
+}
+.li-button-container.show{
+  display: block;
+}
 button{
   appearance: button;
   background-color: #1899D6;

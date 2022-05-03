@@ -35,9 +35,8 @@ class App extends Component {
           from: "",
           to: "",
           summary: "",
-        }
-
-
+        },
+        edit: false,
       }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -45,10 +44,13 @@ class App extends Component {
     this.handleBack = this.handleBack.bind(this)
     this.addToArray = this.addToArray.bind(this)
     this.clearNewObject = this.clearNewObject.bind(this)
+    this.handleMouseOver = this.handleMouseOver.bind(this)
+    this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.handleInitEdit = this.handleInitEdit.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
 
   handleChange(e){
-    console.log(e)
     if(this.state.step === 1){
     this.setState(prevState => {
       return {
@@ -80,7 +82,7 @@ class App extends Component {
 }
 
  handleSubmit(e){
-   console.log(e)   
+  //  console.log(e)   
    e.preventDefault()
    this.setState(prevState => {
      return {
@@ -147,10 +149,9 @@ clearNewObject(){
 }
 }
 
-
 addToArray(){
   if(this.state.step === 2){
-   console.log(this.state.newEduExperience)
+  //  console.log(this.state.newEduExperience)
    this.setState(prevState => {
      return {
        ...prevState,
@@ -168,6 +169,54 @@ addToArray(){
     })
   }
  }
+ handleMouseOver(e){
+  if(e.target.parentNode.nodeName === "LI"){
+    e.target.parentNode.lastChild.classList.add("show")
+  }
+ }
+ handleMouseLeave(e){
+   if(e.target.parentNode.nodeName === "LI"){
+     e.target.parentNode.lastChild.classList.remove("show")
+   }
+ }
+ handleInitEdit(e){
+  let li = e.target.parentNode.parentNode
+  let id = li.id
+  console.log(li)
+  if(li.classList.contains("educationblock")){
+    let getObjToEdit = this.state.eduExperience.filter(item => item.id === id)
+    let objToEdit = getObjToEdit[0]
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        step: 2,
+        newEduExperience: {
+          id: objToEdit.id,
+          degreeTitle: objToEdit.degreeTitle,
+          school: objToEdit.school,
+          from: objToEdit.from,
+          to: objToEdit.to
+        },
+        edit: !prevState.edit
+      }
+    })
+  }
+ }
+ handleEdit(e){
+   console.log(this.state.eduExperience)
+  if(this.state.step === 2){
+    e.preventDefault()
+    const { newEduExperience } = this.state;
+    console.log(newEduExperience)
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        eduExperience: prevState.eduExperience.map(item => item.id === newEduExperience.id ? newEduExperience : item)
+      }
+    })
+  }
+  setTimeout(console.log(this.state.eduExperience),10000)
+ }
 
   render(){
     return (
@@ -177,10 +226,14 @@ addToArray(){
         handleAdd={this.handleAdd}
         handleSubmit={this.handleSubmit}
         handleBack={this.handleBack}
+        handleEdit={this.handleEdit}
         state={this.state} 
       />
       <Cv 
         state={this.state}
+        handleMouseOver={(e) => this.handleMouseOver(e)}
+        handleMouseLeave={(e) => this.handleMouseLeave(e)}
+        handleInitEdit={(e) => this.handleInitEdit(e)}
       />
     </>
 

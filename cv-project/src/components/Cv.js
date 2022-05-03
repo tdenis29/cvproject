@@ -9,10 +9,11 @@ class Cv extends Component{
     
     render(){
     const { firstName, lastName, phoneNumber, email, address, city, province, objective } = this.props.state
-    
+    const {handleMouseOver, handleMouseLeave, handleInitEdit} = this.props
+
     const eduExperienceElements = this.props.state.eduExperience.map(item => {
             return (
-                <li className="educationblock" id={item.id} key={item.id}>
+                <li className="educationblock" onMouseEnter={handleMouseOver} onMouseLeave={handleMouseLeave} id={item.id} key={item.id}>
                     <div className="educationblock-head">
                         <p className="degree">{item.degreeTitle}</p>
                         <p className="school">{item.school}</p>
@@ -20,6 +21,10 @@ class Cv extends Component{
                     <div className="educationblock-body">
                         <p className="from">{item.from}</p>
                         <p className="to">{item.to}</p>
+                    </div>
+                    <div className="li-button-container">
+                        <button onClick={handleInitEdit} className="editButton">Edit</button>
+                        <button className="removeButton">Remove</button>
                     </div>
                 </li>
             )

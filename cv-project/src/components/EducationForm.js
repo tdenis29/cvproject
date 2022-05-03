@@ -5,8 +5,8 @@ class EducationForm extends Component {
 
     render(){
         
-        const { handleChange,handleAdd,handleSubmit,handleBack,  state: {newEduExperience : {degreeTitle, school, from, to}}} = this.props.props
-        console.log(this.props.props.state)
+        const { handleChange,handleAdd,handleSubmit,handleBack,handleEdit,  state: {newEduExperience : {degreeTitle, school, from, to}}} = this.props.props
+        const {edit} = this.props.props.state
         return (
         <>
            <p className='asH1'>Education</p> 
@@ -43,13 +43,13 @@ class EducationForm extends Component {
                     value={to || ""}
                     name="to"
                 />
-             
-            <button>Add</button>
-            </form>
+            {edit ? <button type="button" onClick={handleEdit}>Edit</button> : <button>Add</button> } 
             <div className="button-container">
                 <button onClick={handleBack}>Back</button>
                 <button onClick={handleSubmit}>Next</button>
             </div>
+            </form>
+       
         </>
         )
     }
