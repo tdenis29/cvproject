@@ -9,6 +9,7 @@ class App extends Component {
     super()
     this.state = {
         step: 1,
+        edit: false,
         firstName: "",
         lastName : "",
         phoneNumber: "",
@@ -36,8 +37,8 @@ class App extends Component {
           to: "",
           summary: "",
         },
-        edit: false,
       }
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleAdd = this.handleAdd.bind(this)
@@ -48,6 +49,7 @@ class App extends Component {
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
     this.handleInitEdit = this.handleInitEdit.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+ 
   }
 
   handleChange(e){
@@ -81,8 +83,7 @@ class App extends Component {
   }
 }
 
- handleSubmit(e){
-  //  console.log(e)   
+ handleSubmit(e){ 
    e.preventDefault()
    this.setState(prevState => {
      return {
@@ -92,7 +93,7 @@ class App extends Component {
    })
  }
 
- handleBack(e){
+ handleBack(){
    this.setState(prevState => {
      return {
        ...prevState,
@@ -182,7 +183,6 @@ addToArray(){
  handleInitEdit(e){
   let li = e.target.parentNode.parentNode
   let id = li.id
-  console.log(li)
   if(li.classList.contains("educationblock")){
     let getObjToEdit = this.state.eduExperience.filter(item => item.id === id)
     let objToEdit = getObjToEdit[0]
@@ -200,23 +200,48 @@ addToArray(){
         edit: !prevState.edit
       }
     })
-  }
- }
- handleEdit(e){
-   console.log(this.state.eduExperience)
-  if(this.state.step === 2){
-    e.preventDefault()
-    const { newEduExperience } = this.state;
-    console.log(newEduExperience)
+  } else if (li.classList.contains('workblock')){
+    let getObjToEdit = this.state.workExperience.filter(item => item.id === id)
+    let objToEdit = getObjToEdit[0]
     this.setState(prevState => {
       return {
         ...prevState,
-        eduExperience: prevState.eduExperience.map(item => item.id === newEduExperience.id ? newEduExperience : item)
+        step: 3,
+        newWorkExperience: {
+          id: objToEdit.id,
+          jobTitle: objToEdit.jobTitle,
+          companyName: objToEdit.companyName,
+          from: objToEdit.from,
+          to: objToEdit.to,
+          summary: objToEdit.summary
+        },
+        edit: !prevState.edit
       }
     })
   }
-
  }
+ handleEdit(e){
+  if(this.state.step === 2){
+    e.preventDefault()
+    const { newEduExperience } = this.state;
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        eduExperience: prevState.eduExperience.map(item => item.id === newEduExperience.id ? newEduExperience : item),
+        edit: !prevState.edit
+      }
+    },this.clearNewObject())
+  } else if(this.state.step === 3){
+    e.preventDefault()
+    const { newWorkExperience } = this.state;
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        workExperience: prevState.workExperience.map(item => item.id === newWorkExperience.id ? newWorkExperience : item),
+        edit: !prevState.edit
+      }
+    },this.clearNewObject())
+  }}
 
   render(){
     return (

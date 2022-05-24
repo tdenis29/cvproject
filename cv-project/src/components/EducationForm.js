@@ -43,7 +43,7 @@ class EducationForm extends Component {
                     value={to || ""}
                     name="to"
                 />
-            {edit ? <button type="button" onClick={handleEdit}>Edit</button> : <button>Add</button> } 
+            {edit ? <button type="button" onClick={handleEdit}>Confirm Edit</button> : <button>Add</button> } 
             <div className="button-container">
                 <button onClick={handleBack}>Back</button>
                 <button onClick={handleSubmit}>Next</button>

@@ -8,7 +8,7 @@ class Cv extends Component{
     }
     
     render(){
-    const { firstName, lastName, phoneNumber, email, address, city, province, objective } = this.props.state
+    const { firstName, lastName, phoneNumber, email, address, city, province, objective, edit } = this.props.state
     const {handleMouseOver, handleMouseLeave, handleInitEdit} = this.props
 
     const eduExperienceElements = this.props.state.eduExperience.map(item => {
@@ -23,7 +23,7 @@ class Cv extends Component{
                         <p className="to">{item.to}</p>
                     </div>
                     <div className="li-button-container">
-                        <button onClick={handleInitEdit} className="editButton">Edit</button>
+                       { edit === false ? <button id="initEduEdit" onClick={handleInitEdit} className="editButton">Edit</button> : <button id="initEduEdit" onClick={handleInitEdit} className="editButton" disabled="tue">Edit</button>}
                         <button className="removeButton">Remove</button>
                     </div>
                 </li>
@@ -39,9 +39,12 @@ class Cv extends Component{
                 <div className="workblock-body">
                     <p className="from">{item.from}</p>
                     <p className="to">{item.to}</p>
+                    <p className="summary">{item.summary}</p>
                 </div>
+              
                 <div className="li-button-container">
-                    <button onClick={handleInitEdit} className="editButton">Edit</button>
+                    {edit === false ? <button id="initWorkEdit" onClick={handleInitEdit} className="editButton">Edit</button> :
+                     <button id="initWorkEdit" onClick={handleInitEdit} className="editButton" disabled="true">Edit</button>  }
                     <button className="removeButton">Remove</button>
                 </div>
             </li>
@@ -68,19 +71,19 @@ class Cv extends Component{
                     </div>
                 </header>
                 <div className="cv_objective-container">
-                    <p className="asH3">Objective</p>
+                    <p className="asH3 bold">Objective</p>
                     <p className="objective">{objective}</p>
                 </div>
 
                 <div className="cv_education-container">
-                    <p className="asH3">Education</p>
+                    <p className="asH3 bold">Education</p>
                     <ul className="cv_education-blockContainer">
                         {eduExperienceElements}
                     </ul>
                 </div>
 
                 <div className="cv_work-container">
-                    <p className="asH3">Work Experience</p>
+                    <p className="asH3 bold">Work Experience</p>
                     <ul className="cv_workexperience-blockContainer">
                         {workExperienceElements}
                     </ul>

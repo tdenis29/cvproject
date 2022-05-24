@@ -35,13 +35,7 @@ class Form extends Component {
                 </div>
             )
         } 
-        // return (
-            // <div className='form_container'>
-            //     <PersonalForm
-            //         props={this.props}
-            //     />
-            // </div>
-        // )
+
     }
 }
 

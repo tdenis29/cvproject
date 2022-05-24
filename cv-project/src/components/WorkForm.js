@@ -3,7 +3,8 @@ import React, { Component } from "react";
 class WorkForm extends Component{
 
     render() {
-        const { handleChange,handleAdd,handleBack, handleSubmit, state: {newWorkExperience : {companyName, jobTitle, from, to, summary}}} = this.props.props
+        const { handleChange,handleAdd,handleBack, handleSubmit,handleEdit, state: {newWorkExperience : {companyName, jobTitle, from, to, summary}}} = this.props.props
+        const {edit} = this.props.props.state
         return (
             <>
             <p className='asH1 form'>Work Experience</p> 
@@ -48,7 +49,7 @@ class WorkForm extends Component{
                 >
 
                 </textarea>
-             <button>Add</button>
+            {edit ? <button type="button" onClick={handleEdit}>Confirm Edit</button> : <button>Add</button> } 
              <div className="button-container">
                 <button type="button" onClick={handleBack}>Back</button>
                 <button type="button" onClick={handleSubmit}>Next</button>

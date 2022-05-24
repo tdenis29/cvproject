@@ -7,17 +7,20 @@
 #root{
   display: flex;
   justify-content: center;
+  padding-top: 2rem;
 }
 .form_container{
   width: 45%;
-  background-color: aqua;
+  background-color: whitesmoke;
 }
 .cv_container{
   width: 45%;
-  background-color: red;
+  background-color: white;
   padding: 0 1rem;
 }
-
+.summary{
+  display: block;
+}
 
 
 /* CV Header Layout */
@@ -57,23 +60,43 @@ header{
  font-size: 1.4rem;
  margin-bottom: 1rem;
 }
+.asH3.bold{
+  font-weight: 700;
+  text-decoration: underline;
+}
 .cv_contact--small-heading{
   font-size: 1.25rem;
 }
 .educationblock-head, .workblock-head{
   display: flex;
   justify-content: left;
-  align-items: flex-end;
+  flex-direction: column;
   width: 75%;
-  
+}
+.degree{
+  color: rgb(119, 68, 139);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.school{
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.from, .to{
+  font-size: 1.2rem;
 }
 .educationblock-body, .workblock-body{
   display: flex;
   justify-content: left;
-  
+  width: 75%;
+  margin-top: .5rem;
 }
 .degree,.school, .jobTitle, .companyName{
   width: 50%;
+  margin: .25rem 0;
+}
+.to, .from{
+  width: 30%;
 }
 /* form Styles */
 
@@ -132,7 +155,13 @@ header{
 .li-button-container.show{
   display: block;
 }
-
+input:hover, textarea:hover{
+  background-color: #1CB0F6;
+  color: black;
+}
+input:focus, textarea:focus{
+  background-color: lightcyan;
+}
 /* Button styles */
 .button-container{
   width: 100%;
@@ -188,9 +217,13 @@ button{
 .button:focus {
   user-select: auto;
 }
-
-.button:hover {
-  background-color: dodgerblue;
+button:disabled{
+  background-color: red;
+}
+button:hover {
+  background-color: white;
+  color: dodgerblue;
+  border: solid 1px dodgerblue;
 }
 
 .button:disabled {
