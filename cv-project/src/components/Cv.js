@@ -9,7 +9,7 @@ class Cv extends Component{
     
     render(){
     const { firstName, lastName, phoneNumber, email, address, city, province, objective, edit } = this.props.state
-    const {handleMouseOver, handleMouseLeave, handleInitEdit} = this.props
+    const {handleMouseOver, handleMouseLeave, handleInitEdit, handleRemoveItem} = this.props
 
     const eduExperienceElements = this.props.state.eduExperience.map(item => {
             return (
@@ -23,8 +23,8 @@ class Cv extends Component{
                         <p className="to">{item.to}</p>
                     </div>
                     <div className="li-button-container">
-                       { edit === false ? <button id="initEduEdit" onClick={handleInitEdit} className="editButton">Edit</button> : <button id="initEduEdit" onClick={handleInitEdit} className="editButton" disabled="tue">Edit</button>}
-                        <button className="removeButton">Remove</button>
+                       { edit === false ? <button id="initEduEdit" onClick={handleInitEdit} className="editButton">Edit</button> : <button id="initEduEdit" onClick={handleInitEdit} className="editButton" disabled={true}>Edit</button>}
+                      {edit === false ? <button onClick={handleRemoveItem} className="removeButton">Remove</button> : <button className="removeButton" diasbaled={true}>Remove</button>}
                     </div>
                 </li>
             )
@@ -45,7 +45,7 @@ class Cv extends Component{
                 <div className="li-button-container">
                     {edit === false ? <button id="initWorkEdit" onClick={handleInitEdit} className="editButton">Edit</button> :
                      <button id="initWorkEdit" onClick={handleInitEdit} className="editButton" disabled="true">Edit</button>  }
-                    <button className="removeButton">Remove</button>
+                    {edit === false ? <button onClick={handleRemoveItem} className="removeButton">Remove</button> : <button className="removeButton" diasbaled={true}>Remove</button>}
                 </div>
             </li>
             )

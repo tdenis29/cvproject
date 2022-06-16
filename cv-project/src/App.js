@@ -49,6 +49,7 @@ class App extends Component {
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
     this.handleInitEdit = this.handleInitEdit.bind(this)
     this.handleEdit = this.handleEdit.bind(this)
+    this.handleRemoveItem = this.handleRemoveItem.bind(this)
  
   }
 
@@ -152,7 +153,6 @@ clearNewObject(){
 
 addToArray(){
   if(this.state.step === 2){
-  //  console.log(this.state.newEduExperience)
    this.setState(prevState => {
      return {
        ...prevState,
@@ -170,16 +170,19 @@ addToArray(){
     })
   }
  }
+
  handleMouseOver(e){
   if(e.target.parentNode.nodeName === "LI"){
     e.target.parentNode.lastChild.classList.add("show")
   }
  }
+
  handleMouseLeave(e){
    if(e.target.parentNode.nodeName === "LI"){
      e.target.parentNode.lastChild.classList.remove("show")
    }
  }
+
  handleInitEdit(e){
   let li = e.target.parentNode.parentNode
   let id = li.id
@@ -242,6 +245,26 @@ addToArray(){
       }
     },this.clearNewObject())
   }}
+  
+  handleRemoveItem(e){
+    let li = e.target.parentNode.parentNode
+    let id = li.id
+    if(li.classList.contains('educationblock')){
+      this.setState(prevState=> {
+        return {
+          ...prevState,
+          eduExperience: prevState.eduExperience.filter(item => item.id !== id)
+        }
+      })
+    } else if (li.classList.contains('workblock')){
+      this.setState(prevState=> {
+        return {
+          ...prevState,
+          eduExperience: prevState.workExperience.filter(item => item.id !== id)
+        }
+      })
+    }
+  }
 
   render(){
     return (
@@ -259,6 +282,7 @@ addToArray(){
         handleMouseOver={(e) => this.handleMouseOver(e)}
         handleMouseLeave={(e) => this.handleMouseLeave(e)}
         handleInitEdit={(e) => this.handleInitEdit(e)}
+        handleRemoveItem={(e) => this.handleRemoveItem(e)}
       />
     </>
 

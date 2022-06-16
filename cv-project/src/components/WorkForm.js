@@ -51,8 +51,8 @@ class WorkForm extends Component{
                 </textarea>
             {edit ? <button type="button" onClick={handleEdit}>Confirm Edit</button> : <button>Add</button> } 
              <div className="button-container">
-                <button type="button" onClick={handleBack}>Back</button>
-                <button type="button" onClick={handleSubmit}>Next</button>
+                {edit ? <button type="button" disabled={true}>Back</button>: <button type="button" onClick={handleBack}>Back</button> }
+                {edit ? <button type="button" disabled={true}>Next</button>: <button type="button" onClick={handleSubmit}>Next</button>}
             </div>
              </form>
            

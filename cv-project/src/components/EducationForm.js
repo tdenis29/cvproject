@@ -45,8 +45,8 @@ class EducationForm extends Component {
                 />
             {edit ? <button type="button" onClick={handleEdit}>Confirm Edit</button> : <button>Add</button> } 
             <div className="button-container">
-                <button onClick={handleBack}>Back</button>
-                <button onClick={handleSubmit}>Next</button>
+                {edit ? <button disabled={true}>Back</button> :<button onClick={handleBack}>Back</button>}
+                {edit ? <button disabled={true}>Next</button> :<button onClick={handleSubmit}>Next</button>}
             </div>
             </form>
        
