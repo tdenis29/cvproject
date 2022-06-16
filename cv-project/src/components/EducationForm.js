@@ -22,7 +22,7 @@ class EducationForm extends Component {
 
                 <input
                     type="text"
-                    placeholder="school"
+                    placeholder="School"
                     onChange={handleChange}
                     value={school || ""}
                     name="school"
