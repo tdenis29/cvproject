@@ -1,13 +1,9 @@
 /* eslint-disable no-useless-constructor */
-import React, { Component } from "react";
+import React from "react";
 
 
-class Cv extends Component{
-    constructor(props){
-        super(props)
-    }
-    
-    render(){
+export default function Cv (props){
+ 
     const { firstName, lastName, phoneNumber, email, address, city, province, objective, edit } = this.props.state
     const {handleMouseOver, handleMouseLeave, handleInitEdit, handleRemoveItem} = this.props
 
@@ -91,5 +87,3 @@ class Cv extends Component{
             </div>
         )
     }
-}
-export default Cv

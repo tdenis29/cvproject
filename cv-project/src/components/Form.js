@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+/* eslint-disable default-case */
+import React from 'react';
 import EducationForm from './EducationForm';
 import PersonalForm from './PersonalForm';
 import WorkForm from './WorkForm';
-class Form extends Component {
 
-   
-    render(){
-        const { step } = this.props.state
-     
-        // eslint-disable-next-line default-case
-        switch(step){
+export default function Form (props) {
+
+    const {step} = props
+            switch(step){
             case 1: 
                 return(
                     <div className='form_container'>
@@ -37,6 +35,4 @@ class Form extends Component {
         } 
 
     }
-}
 
-export default Form 
